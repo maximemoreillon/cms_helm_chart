@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cms-front
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cms-front
+  template:
+    metadata:
+      labels:
+        app: cms-front
+    spec:
+      containers:
+      - name: cms-front
+        image: moreillon/cms-front
+        ports:
+        - containerPort: 80
+        envFrom:
+        - secretRef:
+           name: environment-variables

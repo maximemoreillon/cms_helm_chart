@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: cms-front
+spec:
+  type: ClusterIP
+  selector:
+    app: cms-front
+  ports:
+  - port: 80

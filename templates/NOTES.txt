@@ -1,0 +1,4 @@
+CMS
+Ports:
+- User manager GUI {{ .Values.ports.userManagerGui }}
+- CMS GUI {{ .Values.ports.cmsGui }}

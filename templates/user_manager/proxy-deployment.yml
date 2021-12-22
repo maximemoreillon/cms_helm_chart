@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-manager-api-proxy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: user-manager-api-proxy
+  template:
+    metadata:
+      labels:
+        app: user-manager-api-proxy
+    spec:
+      containers:
+      - name: user-manager-api-proxy
+        image: moreillon/api-proxy
+        ports:
+        - containerPort: 80
+        envFrom:
+        - secretRef:
+           name: environment-variables
+        env:
+        - name: PROXY_ROOT
+          value: http://user-manager-front

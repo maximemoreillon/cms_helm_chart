@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cms
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cms
+  template:
+    metadata:
+      labels:
+        app: cms
+    spec:
+      containers:
+      - name: cms
+        image: moreillon/cms
+        ports:
+        - containerPort: 80
+        envFrom:
+        - secretRef:
+           name: environment-variables
